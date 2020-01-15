@@ -30,6 +30,9 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+		if event.Name != "" && event.Op == "put" && strings.HasSuffix(event.Name, ".go") {
+			reformat(event.ID, event.Name, "goimports", event.Name)
+		}
 		if event.Name != "" && event.Op == "put" && strings.HasSuffix(event.Name, ".html") {
 			reformat(event.ID, event.Name, "html-beautify", "-t", "-f", event.Name)
 		}
