@@ -39,6 +39,9 @@ func main() {
 		if event.Name != "" && event.Op == "put" && strings.HasSuffix(event.Name, ".css") {
 			reformat(event.ID, event.Name, "css-beautify", "-t", "-f", event.Name)
 		}
+		if event.Name != "" && event.Op == "put" && strings.HasSuffix(event.Name, ".dart") {
+			reformat(event.ID, event.Name, "dartfmt", "--fix", event.Name)
+		}
 	}
 }
 
