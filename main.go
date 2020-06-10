@@ -36,8 +36,8 @@ func main() {
 		if event.Name != "" && event.Op == "put" && strings.HasSuffix(event.Name, ".html") {
 			reformat(event.ID, event.Name, "html-beautify", "-t", "-f", event.Name)
 		}
-		if event.Name != "" && event.Op == "put" && strings.HasSuffix(event.Name, ".js") {
-			reformat(event.ID, event.Name, "js-beautify", "-t", "-f", event.Name)
+		if event.Name != "" && event.Op == "put" && (strings.HasSuffix(event.Name, ".js") || strings.HasSuffix(event.Name, ".vue")) {
+			reformat(event.ID, event.Name, "prettier-eslint", "--log-level", "silent", event.Name)
 		}
 		if event.Name != "" && event.Op == "put" && strings.HasSuffix(event.Name, ".css") {
 			reformat(event.ID, event.Name, "css-beautify", "-t", "-f", event.Name)
