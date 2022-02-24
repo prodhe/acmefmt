@@ -43,7 +43,7 @@ func main() {
 			reformat(event.ID, event.Name, "css-beautify", "-t", "-f", event.Name)
 		}
 		if event.Name != "" && event.Op == "put" && strings.HasSuffix(event.Name, ".dart") {
-			reformat(event.ID, event.Name, "dartfmt", "--fix", event.Name)
+			reformat(event.ID, event.Name, "dart", "format", "--output", "show", "--show", "none", "--summary", "none", "--fix", event.Name)
 		}
 	}
 }
